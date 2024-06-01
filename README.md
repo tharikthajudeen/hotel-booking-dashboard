@@ -1,70 +1,135 @@
-# Getting Started with Create React App
+# Hotel Booking Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This React application allows users to book hotels by selecting the hotel name, room type, and board type. The application fetches data from an API and displays a booking form with a background image slider. Users can submit the form, and a toast notification will indicate the result.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Fetches hotel names, room types, and board types from an API.
+- Displays a booking form with dropdowns for hotel name, room type, and board type.
+- Image slider with sample hotel images as background.
+- Toast notifications for form submission status.
+- Form validation to ensure all fields are filled out before submission.
+- Responsive design suitable for different screen sizes.
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **Clone the repository:**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+   ```bash
+   git clone https://github.com/tharikthajudeen/hotel-booking-dashboard.git
+   cd hotel-booking-dashboard
+   ```
 
-### `npm test`
+2. **Install the dependencies:**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```bash
+   npm install
+   ```
 
-### `npm run build`
+3. **Start the development server:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   npm start
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   This will run the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Dependencies
 
-### `npm run eject`
+- **React**: Frontend library for building user interfaces.
+- **Axios**: For making HTTP requests to the API.
+- **React Toastify**: For displaying toast notifications.
+- **React Icons**: For using FontAwesome icons.
+- **React Slick**: For creating the image slider.
+- **Slick Carousel**: CSS for React Slick.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Custom Hook: `useFetch`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+A custom hook for fetching data from an API.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Usage:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```javascript
+const { data, loading, error } = useFetch('http://localhost:8080/api/endpoint');
+```
 
-## Learn More
+## Components
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### HotelBookingForm
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The main component that renders the booking form and background image slider.
 
-### Code Splitting
+#### State Management:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- `name`: Hotel name selected by the user.
+- `roomType`: Room type selected by the user.
+- `boardType`: Board type selected by the user.
+- `submitting`: Boolean to indicate form submission status.
 
-### Analyzing the Bundle Size
+#### Form Submission:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Validates that all fields are filled.
+- Submits the form data to the API.
+- Displays success or error toast notifications.
 
-### Making a Progressive Web App
+### Slider Settings
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Settings for the background image slider.
 
-### Advanced Configuration
+```javascript
+const settings = {
+  infinite: true,
+  speed: 3000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 5000,
+  adaptiveHeight: true,
+};
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Sample Images
 
-### Deployment
+Three sample images (`hotelImage1`, `hotelImage2`, `hotelImage3`) are used in the image slider.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## API Endpoints
 
-### `npm run build` fails to minify
+- **GET** `http://localhost:8080/api/hotels/names`: Fetch hotel names.
+- **GET** `http://localhost:8080/api/hotels/room-types`: Fetch room types.
+- **GET** `http://localhost:8080/api/hotels/board-types`: Fetch board types.
+- **POST** `http://localhost:8080/api/hotels`: Submit booking form data.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Development
+
+### Folder Structure
+
+```
+hotel-booking-app/
+├── public/
+├── src/
+│   ├── components/
+│   │   └── HotelBookingForm.js
+│   ├── images/
+│   │   └── hotel-image.jpg
+│   ├── App.js
+│   └── index.js
+├── .gitignore
+├── package.json
+├── README.md
+└── yarn.lock
+```
+
+### Adding More Images
+
+Add more images to the `src/images/` directory and import them in `HotelBookingForm.js`. Update the `images` array to include the new images.
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and create a pull request with your changes.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
