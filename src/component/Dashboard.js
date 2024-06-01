@@ -7,9 +7,9 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-import hotelImage1 from '../hotel-image.jpg'; // Importing sample hotel images
-import hotelImage2 from '../hotel-image.jpg';
-import hotelImage3 from '../hotel-image.jpg';
+import hotelImage1 from '../images/hotel-image.jpg'; // Importing sample hotel images
+import hotelImage2 from '../images/hotel-image.jpg';
+import hotelImage3 from '../images/hotel-image.jpg';
 
 // Custom hook for data fetching
 const useFetch = (url) => {
